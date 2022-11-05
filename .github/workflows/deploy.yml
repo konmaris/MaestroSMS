@@ -16,17 +16,21 @@ jobs:
         node-version: [18.x]
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Setting up Github Actions...
+        uses: actions/checkout@v3
+
+      - name: Setting up Node environment...
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: npm build
+
+      - name: Building React app...
         run: |
           npm ci
           npm run build --if-present     
 
-      - uses: a7ul/tar-action@v1.1.0
+      - name: Packaging build to a tarball...
+        uses: a7ul/tar-action@v1.1.0
         with:
           command: c
           cwd: "./"
@@ -35,7 +39,7 @@ jobs:
             build/
           outPath: deploy.tar
   
-      - name: Deploy App to CapRover
+      - name: Deploying app to CapRover...
         uses: caprover/deploy-from-github@v1.0.1
         with:
           server: '${{ secrets.CAPROVER_SERVER }}'
