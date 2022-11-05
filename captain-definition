@@ -1,8 +1,14 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 1,
   "dockerfileLines": [
-    "FROM socialengine/nginx-spa:latest",
-    "COPY ./build /app",
-    "RUN chmod -R 777 /app"
+    "FROM node:16-alpine",
+    "RUN mkdir -p /src/app",
+    "WORKDIR /src/app",
+    "COPY ./package.json /src/app/",
+    "RUN npm install && npm install -g pushstate-server",
+    "COPY ./src /src/app",
+    "RUN npm run build",
+    "RUN npm install -g serve",
+    "CMD [ \"server\", \"-s\", \"build\" ]"
   ]
 }
