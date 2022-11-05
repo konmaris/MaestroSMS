@@ -1,13 +1,6 @@
 {
   "schemaVersion": 2,
   "dockerfileLines": [
-    "FROM node:8.7.0-alpine",
-    "RUN mkdir -p /src/app",
-    "WORKDIR /src/app",
-    "COPY ./src/package.json /src/app/",
-    "RUN npm install && npm install -g pushstate-server",
-    "COPY ./src /src/app",
-    "RUN npm run build",
     "FROM socialengine/nginx-spa:latest",
     "COPY ./build /app",
     "RUN chmod -R 777 /app"
