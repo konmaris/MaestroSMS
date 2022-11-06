@@ -43,9 +43,15 @@ Now, let's move on and create an empty app on our CapRover dashboard.
 
 Next, let's move over to Github to create and configure a Github Action that will each time a `git push` event is detected, will build our React app, bundle it together with `captain-definition` file into a tarball and serve it to our CapRover instance to deploy it.
 
-1. Visit your repository on Github and go to the "**Actions**" tab. There below the "**Get started with GitHub Actions**", you will see a link saying **"Skip this and set up a workflow yourself"** as seen below.
+1. Visit your repository on Github and go to the **Settings** tab of your repository and from within the **Security** group on the sidebar, click on the **Secrets** option and once the dropdown menu expands, click the option named **Actions**. There you will need to create 3 new secrets as shown below.
 
-2. Once you click the link, you will be redirected to a page to create a workflow file (with the extension `.yml`) that will contain all the needed information for the whole build & deploy procedure. In the upper-left section above the text editor you will the a field with the filename inside it. By default, the file would be called `main.yml` but we need to change it to `deploy.yml` in order for everything to function properly. After you do so, paste the contents below inside the text editor and click the green **Start commit** button on the upper-right section, and then click the green **Commit new file** button to save the workflow `.yml` file.
+   - **APP_TOKEN** that should contain the token we generated and copied to our clipboard earlier on this guide,
+   - **APP_NAME** that should contain the name of your CapRover application exactly as you typed it in the beginning, and lastly,
+   - **CAPROVER_SERVER** that should contain the address of your CapRover instance, strictly in this format `https://captain.yourdomain.com` (only change the `yourdomain.com` part)
+
+2. After you create the 3 secrets mentioned above, go to the "**Actions**" tab in your repository. There, below the "**Get started with GitHub Actions**", you will see a link saying **"Skip this and set up a workflow yourself"** as seen below.
+
+3. Once you click the link, you will be redirected to a page to create a workflow file (with the extension `.yml`) that will contain all the needed information for the whole build & deploy procedure. In the upper-left section above the text editor you will the a field with the filename inside it. By default, the file would be called `main.yml` but we need to change it to `deploy.yml` in order for everything to function properly. After you do so, paste the contents below inside the text editor and click the green **Start commit** button on the upper-right section, and then click the green **Commit new file** button to save the workflow `.yml` file.
 
    ```yml
    name: Build & Deploy
@@ -95,11 +101,5 @@ Next, let's move over to Github to create and configure a Github Action that wil
              app: "${{ secrets.APP_NAME }}"
              token: "${{ secrets.APP_TOKEN }}"
    ```
-
-3. Once the workflow mentioned above is succesfully created moving on to **Settings** tab of your repository and from within the **Security** group on the sidebar, click on the **Secrets** option and once the dropdown menu expands, click the option named **Actions**. There you will need to create 3 new secrets as shown below.
-
-   - **APP_TOKEN** that should contain the token we generated and copied to our clipboard earlier on this guide,
-   - **APP_NAME** that should contain the name of your CapRover application exactly as you typed it in the beginning, and lastly,
-   - **CAPROVER_SERVER** that should contain the address of your CapRover instance, strictly in this format `https://captain.yourdomain.com` (only change the `yourdomain.com` part)
 
 4. If you followed each step of this guide carefully, our app is ready to be deployed to the web! Go to your IDE and push the source files into your Github repository and after a few moments, your app will ready in production mode & SSL-enabled in a URL of this format `https://my-react-app.yourdomain.com` (replace `my-react-app` with the app name you chose earlier & `yourdomain.com` with your domain) and see the magic happen!
