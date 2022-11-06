@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+<style>body {text-align: justify}</style>
+
+>>>>>>> 4b37bce (guide almost complete)
 # Guide to setup CapRover
 
 _In this guide you will find out how to host CapRover, an open-source app/database deployment and server manager for your NodeJS, Python, PHP, ASP<no-link>.NET, Ruby, MySQL, MongoDB, Postgres, WordPress applications!_
