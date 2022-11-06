@@ -162,8 +162,28 @@ Now, let's (finally) move on to install and configure **CapRover** on our machin
    npm install -g caprover
    ```
 
-4. Finally, now it's time to configure our **CapRover** instance. To do this, you can execute the following command and enter your server's IP address, your domain name in this strict format, without **www** or anything else, "**yourdomain.com**" (without the double quotes). You will also be asked to configure an administrator's password. This password will be used by you to login to the web interface of **CapRover**, so be sure you remember it.
+4. Finally, now it's time to configure our **CapRover** instance. To do this, you can execute the following command.
 
    ```bash
    caprover serversetup
    ```
+
+   After executing the above-mentioned command you will be prompted to fill in some details about your server. The prompts should look like the example below, and
+
+   ```bash
+    Setup CapRover machine on your server...
+
+    ? have you already started CapRover container on your server? Yes # type yes since we started the container earlier
+    ? IP address of your server: xx.xx.xx.xx # type your server's public IP address
+    ? CapRover server root domain: yourdomain.com # type the domain you have purchased without "www" or anything else
+    ? new CapRover password (min 8 characters): # type an administrator password (hidden)
+    ? enter new CapRover password again: # type the above password again
+    ? "valid" email address to get certificate and enable HTTPS: example@email.com # type your email for SSL certificates from Let's Encrypt
+    ? CapRover machine name, with whom the login credentials are stored locally: (captain) # leave as is and just press enter
+
+    CapRover server setup completed: it is available as captain at https://captain.yourdomain.com
+
+    For more details and docs see CapRover.com
+   ```
+
+5. We're done! Visit the web interface of your CapRover instance by typing https://captain.yourdomain.com in your browser and login with the administrator password you set earlier. Congratulations!
